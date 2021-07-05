@@ -23,6 +23,8 @@ namespace ShopBridge.WebAPI.Controllers
             this._itemManager = itemManager;
         }
 
+
+        //lists items from inventory
         // GET: api/Items
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Item>>> GetItemList(Item item)
@@ -31,6 +33,8 @@ namespace ShopBridge.WebAPI.Controllers
            
         }
 
+
+        //get signle item from id
         // GET: api/Items/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Item>> GetItem(int id)
@@ -38,20 +42,23 @@ namespace ShopBridge.WebAPI.Controllers
             return await this._itemManager.GetItem(id);
         }
 
-        
+
+        //update item from inventory
         [HttpPut("{id}")]
         public async Task<ActionResult<Item>> PutItem(int id, Item item)
         {
             return await this._itemManager.PutItem(id,item);
         }
 
-
+        //add new item to inventory 
         [HttpPost]
         public async Task<ActionResult<Item>> PostItem(Item item)
         {
             return await this._itemManager.PostItem(item);
         }
 
+
+        //deleting item from inventory
         // DELETE: api/Items/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteItem(int id)

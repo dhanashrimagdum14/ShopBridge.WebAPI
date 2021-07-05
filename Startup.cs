@@ -59,6 +59,7 @@ namespace ShopBridge.WebAPI
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }
