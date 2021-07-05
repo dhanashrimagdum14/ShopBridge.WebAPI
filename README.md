@@ -3,6 +3,6 @@ E - Commrece Application
 
 
 for Swagger,
-use https://localhost:<port>/swagger/index.html,
+use https://localhost:port/swagger/index.html,
 
 
