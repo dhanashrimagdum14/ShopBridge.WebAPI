@@ -44,7 +44,7 @@ namespace ShopBridge.WebAPI
         {
             if (env.IsDevelopment())
             {
-              //  app.UseDeveloperExceptionPage();
+                app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ShopBridge.WebAPI v1"));
             }

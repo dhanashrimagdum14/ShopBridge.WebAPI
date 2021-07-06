@@ -23,7 +23,7 @@ namespace ShopBridge.WebAPI.Business.Managers
         {
             return await _context.ItemList
                 .Where(x=>x.IsDeleted==false)
-                .Skip(objItem.PageNo*objItem.PageSize)
+                .Skip((objItem.PageNo-1)*objItem.PageSize)
                 .Take(objItem.PageSize)
                 .ToListAsync()
                 ;
@@ -72,11 +72,20 @@ namespace ShopBridge.WebAPI.Business.Managers
 
         public async Task<IActionResult> DeleteItem(int id)
         {
-            var item = await _context.ItemList.FindAsync(id);
-            item.IsDeleted = true;
+            try
+            {
+                var item = await _context.ItemList.FindAsync(id);
+                item.IsDeleted = true;
 
-            
-            await _context.SaveChangesAsync();
+
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(" Error while deleting Item: "+ex.Message);
+            }
+          
             return null;
           
         }
